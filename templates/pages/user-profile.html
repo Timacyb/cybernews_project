@@ -1,0 +1,25 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %} Foydalanuvchi profili {% endblock title %}
+
+{% block content %}
+    <h3>Xush kelibsiz!, {{user.username}}</h3>
+
+<form id="logout-form" action="{% url 'logout' %}" method="post">
+     <h4><a href="#" onclick="document.getElementById('logout-form').submit(); return false;" class="text-danger">Profildan chiqish</a></h4>
+    {% csrf_token %}
+</form>
+
+<h2>Siz haqingizda ma'lumotlar</h2>
+
+    <img src="{{ profil_info.photo.url }}" width="30%">
+    <h4>Tug'ilgan yilingiz: {{profil_info.date_of_birth}}</h4>
+    <label>Username:</label><input value="{{user.username}}" readonly><br>
+    <label>Emailingiz:</label><input value="{{user.email}}" readonly><br>
+    <label>Familiyangiz:</label><input value="{{user.first_name}}" readonly><br>
+    <label>Ismingiz:</label><input value="{{user.last_name}}" readonly><br>
+
+    <h4><a href="{% url 'password_change' %}" class="text-danger">Parolni almashtirish</a> | <a href="{% url 'edit_user_information' %}" class="text-danger">Profil ma'lumotlarini o'zgartirish</a> </h4>
+
+{% endblock content %}

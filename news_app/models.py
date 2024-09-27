@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
 from django.db import models
@@ -46,6 +47,7 @@ class News(models.Model):
     def get_absolute_url(self):
         return reverse("news_detail_page", args=[self.slug])
 
+
 class Contact(models.Model):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=150)
@@ -53,5 +55,26 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Comment(models.Model):
+    news = models.ForeignKey(News,
+                             on_delete=models.CASCADE,
+                             related_name='comments'
+                             )
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE,
+                             related_name='comments'
+                             )
+    body = models.TextField()
+    created_time = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['created_time']
+
+    def __str__(self):
+        return f"Comment - {self.body} by {self.user} "
+
 
 
