@@ -1,0 +1,35 @@
+.navbar-collapse {
+    background-color: #333; /* Цвет фона */
+    padding: 10px; /* Внутренние отступы */
+}
+
+.navbar-nav li {
+    display: inline-block; /* Горизонтальное расположение */
+    margin-right: 15px; /* Отступы между элементами */
+}
+
+.navbar-nav a {
+    color: white; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    padding: 8px 15px; /* Внутренние отступы для ссылок */
+    border-radius: 4px; /* Скругление углов */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.navbar-nav a:hover {
+    background-color: #575757; /* Цвет фона при наведении */
+}
+
+/* Стили для поисковой строки */
+.form-control {
+    width: 200px; /* Ширина поисковой строки */
+    padding: 8px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Цвет границы */
+    border-radius: 4px; /* Скругление углов */
+    transition: border-color 0.3s; /* Плавный переход цвета границы */
+}
+
+.form-control:focus {
+    border-color: #66afe9; /* Цвет границы при фокусе */
+    outline: none; /* Убираем обводку */
+}
