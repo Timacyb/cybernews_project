@@ -12,9 +12,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-
+# DEBUG = True
 ALLOWED_HOSTS = ["django-mohirdev-demo.uz", "www.django-mohirdev-demo.uz", "127.0.0.1"]
-
+# ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -119,8 +119,11 @@ LOCALE_PATH = BASE_DIR, 'locale'
 
 STATIC_URL = 'static/'
 
+# for server
 STATIC_ROOT = '/home/djangomo/django-mohirdev-demo.uz/django/staticfiles'
 STATICFILES_DIRS = ('/home/djangomo/django-mohirdev-demo.uz/django/static', )
+
+# #for local
 # STATICFILES_DIRS = [BASE_DIR / 'static']
 # STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -129,7 +132,11 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 ]
 MEDIA_URL = 'media/'
+
+#for server
 MEDIA_ROOT = '/home/djangomo/django-mohirdev-demo.uz/django/media'
+
+#for local
 # MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
