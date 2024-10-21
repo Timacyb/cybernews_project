@@ -4,24 +4,47 @@
 {% block title %} {{ news.title }} {% endblock title %}
 
 {% block content %}
+<style>
+    #news_photo{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+    }
+    #news_body{
+    margin-right: 30%;
+    }
+    .p1{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    width: 100%;
+    }
+    .p2{
+    font-style: italic;
+    }
+</style>
 
 <h2>{{news.title}}</h2>
-<h5>{{news.publish_time}} | <i class="fa fa-eye" aria-hidden="true"></i> : {% get_hit_count for news %} | Izohlar soni: {{ comment_count }}</h5>
-<img src="{{news.image.url}}">
-<p>{{news.body}}</p>
+<img src="{{news.image.url}}" id="news_photo">
+<p class="p2" align="right">{{news.publish_time}} | <i class="fa fa-eye" aria-hidden="true"></i> : {% get_hit_count for news %} | Izohlar soni: {{ comment_count }}</p>
+<p id="news_body" class="p1">{{news.body}}</p>
 
 
 {% if request.user.is_authenticated and request.user.is_superuser %}
 <div class="card-footer text-center">
     <a href="{% url 'news_update' news.slug %}">
-        Tahrirlash
+        <button type="button" class="btn btn-danger">
+            Tahrirlash
+        </button>
     </a>
     <a href="{% url 'news_delete' news.slug %}">
+        <button type="button" class="btn btn-danger">
         O'chirish
+        </button>
     </a>
 </div>
 {% endif %}<br>
-<h3>Bu yangilikga {{ comment_count }} ta izoh qoldirilgan</h3>
+<h4>Bu yangilikga {{ comment_count }} ta izoh qoldirilgan</h4>
 
 {% for comment in comments%}
 
@@ -40,8 +63,10 @@
 {% if user.is_authenticated %}
 <div class="col-md-8 card mb-4 mt-3">
     <div class="card-body">
-        <h3>Izoh qoldirish</h3>
-        <form method="post" style="margin-top: 1.3em">{% csrf_token %} {{comment_form.as_p}}
+        <h4>Izoh qoldirish</h4>
+        <form method="post" style="margin-top: 1.3em">
+            {% csrf_token %}
+            {{comment_form.as_p}}
             <button type="submit" class="btn btn-primary btn-lg">
                 Yuborish
             </button>
@@ -51,9 +76,15 @@
 {% else %}
 <div class="card-body">
     <p class="text-danger">Faqatgina ro'yhatdan o'tgan foydalanuvchilaer izoh qoldirishi mumkin</p>
-    <p>Izoh qoldirish uchun <a href="{% url 'user_register' %}" style="color: blue">ro'yhatdan</a> o'ting yoki
+    <p>Izoh qoldirish uchun <a href="{% url 'user_register' %}" style="color: blue">
+        <button type="button" class="btn btn-access">
+        ro'yhatdan
+        </button>
+    </a> o'ting yoki
         <a href="{% url 'login' %}" style="color: blue">login</a> qiling</p>
 </div>
+
+
 {% endif %}
 
 {% endblock content %}

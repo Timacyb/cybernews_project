@@ -3,13 +3,26 @@
 {% block title %} Foydalanuvchilarni ro'yxatdan o'tkazish {% endblock title %}
 
 {% block content %}
+
+<style>
+
+    #aaa {
+          color: navy;
+          text-indent: 30px;
+          text-transform: uppercase;
+}
+</style>
 <h1>Yangi foydalanuvchilarni ro'yxatdan o'tkazish</h1>
 <p>Ro'yhatdan o'tish uchun quyidagi formani to'ldiring</p>
 
 <form method="post">{% csrf_token %}
+<!--    <p class="aaa">{{user_form.as_p}}</p>-->
+
     {{user_form.as_p}}
-    <button type="submit">Ro'yhatdan o'tish</button>
+    <button type="submit" class="btn btn-success">Ro'yhatdan o'tish</button>
 </form>
+
+
 
 
 {% endblock content %}

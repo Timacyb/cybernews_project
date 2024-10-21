@@ -32,13 +32,17 @@
           <div class="header_top_left">
             <ul class="top_nav">
               <li><a href="{% url 'home_page' %}">Bosh sahifa</a></li>
-              <li><a href="#">Biz haqimizda</a></li>
+<!--              <li><a href="{% url 'about_us' %}">Biz haqimizda</a></li>-->
               <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
-              {% if user.is_authenticated and user.is_superuser %}
-              <li><a href="{% url 'admin_page' %}">Admin sahifasi</a> </li>
-              {% endif %}
 
-<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+              {% if user.is_authenticated and user.is_superuser %}
+
+              <li><a href="{% url 'admin_page' %}">Admin sahifasi</a> </li>
+
+              {% endif %}
+            </ul>
+
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}">
     <select name="language" class="form-select">
         {% get_current_language as LANGUAGE_CODE %}
@@ -53,20 +57,21 @@
     <input type="submit" value="Go" class="fa fa-angle-up">
 </form>
 
-            </ul>
+
+
           </div>
           <div class="header_top_right">
             {% if request.user.is_authenticated %}
-<!--            -->
+
 <!--            <form id="logout-form" action="{% url 'logout' %}" method="post">-->
-<!--            <h4><a href="#" onclick="document.getElementById('logout-form').submit(); return false;" class="text-danger">Profildan chiqish</a></h4>-->
+<!--            <h4 class="btn btn-danger"  style="border-radius: 5%;  height:10px ;padding-top: 10px ; margin-top:10px"><a href="#" onclick="document.getElementById('logout-form').submit(); return false;" class="text-danger">Profildan chiqish</a></h4>-->
 <!--            {% csrf_token %}-->
 <!--            </form>-->
 
 <!--            <p><a href="{% url 'logout' %}" style="color: yellow">Logout</a> </p>-->
-            <p><a href="{% url 'user_profile' %}" style="color: yellow">My profile</a></p>
+            <p  class="btn btn-success"  style="border-radius: 5%;  height:10px ;padding-top: 10px ; margin-top:10px"><a href="{% url 'user_profile' %}" style="color: white">My profile</a></p>
             {% else %}
-            <p><a href="{% url 'login' %}" style="color: yellow">Saytga kirish</a> </p>
+            <p class="btn btn-success"  style="border-radius: 5%;  height:10px ;padding-top: 10px ; margin-top:10px"><a href="{% url 'login' %}" role="button" style="color: white; ">Saytga kirish</a></p>
             {% endif %}
             <p>{% now "j F Y H:i" %}</p>
           </div>
@@ -75,7 +80,7 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
           <div class="logo_area"><a href="{% url 'home_page' %}" class="logo"><img src="{% static 'images/logos.jpg' %}" alt=""></a></div>
-          <div class="add_banner"><a href="#"><img src="{% static 'images/addbanner_728x90_V1.jpg' %}" alt=""></a></div>
+          <div class="add_banner"><a href="#"><img src="{% static 'images/addbanner_728x90_V1_1.jpg' %}" alt=""></a></div>
         </div>
       </div>
     </div>
@@ -95,7 +100,7 @@
           <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
           <li>
                 <form method="get" action="{% url 'search_results' %}">
-                  <input type="search" name="q" placeholder="Qidiruv..." class="form-control">
+                    <input type="search" name="q" placeholder="Qidiruv..." class="form-control">
                 </form>
           </li>
 <!--          <li><a href="{% url '404_page' %}">404 Page</a></li>-->
@@ -141,33 +146,34 @@
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInLeftBig">
-            <h2>Flickr Images</h2>
+            <h2></h2>
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInDown">
-            <h2>Tag</h2>
+            <h2>Teglar</h2>
             <ul class="tag_nav">
-              {% for category in categories %}
-              <li><a href="#">{{category.name}}</a></li>
-              {% endfor %}
+              <li><a href="{% url 'cybersport_news_page' %}">Kibersport</a></li>
+              <li><a href="{% url 'ctf_news_page' %}">CTF</a></li>
+              <li><a href="{% url 'texnologiyalar_news_page'%}">Texnologiyalar</a></li>
+              <li><a href="{% url 'kiberjinoyatlar_news_page'%}">Kiberjinoyatlar</a></li>
             </ul>
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInRightBig">
-            <h2>Contact</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h2>Manzil</h2>
+            <p>Online yoki offline konferensiya tashkil qilish uchun quyidagi manzillarga murojaat qiling.</p>
             <address>
-            Perfect News,1238 S . 123 St.Suite 25 Town City 3333,USA Phone: 123-326-789 Fax: 123-546-567
+            Xorazm vil. Xonqa tum. Parvoz-13, Pochta index:220200, UZB phone: +99894-313-10-12
             </address>
           </div>
         </div>
       </div>
     </div>
     <div class="footer_bottom">
-      <p class="copyright">Copyright &copy; 2045 <a href="{% url 'home_page' %}">CyberNews</a></p>
-      <p class="developer">Developed By Wpfreeware</p>
+      <p class="copyright">Copyright &copy; 2024 <a href="{% url 'home_page' %}">CyberNews</a></p>
+<!--      <p class="developer">Developed By Wpfreeware</p>-->
     </div>
   </footer>
 </div>

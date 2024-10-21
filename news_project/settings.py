@@ -13,7 +13,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 # DEBUG = True
-ALLOWED_HOSTS = ["django-mohirdev-demo.uz", "www.django-mohirdev-demo.uz", "127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "cyber-news.uz", "www.cyber-news.uz"]
 # ALLOWED_HOSTS = []
 # Application definition
 
@@ -111,7 +111,7 @@ LANGUAGES = [
     ('ru', _("Russian"))
 ]
 
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 LOCALE_PATH = BASE_DIR, 'locale'
 
 # Static files (CSS, JavaScript, Images)
@@ -120,8 +120,8 @@ LOCALE_PATH = BASE_DIR, 'locale'
 STATIC_URL = 'static/'
 
 # for server
-STATIC_ROOT = '/home/djangomo/django-mohirdev-demo.uz/django/staticfiles'
-STATICFILES_DIRS = ('/home/djangomo/django-mohirdev-demo.uz/django/static', )
+STATIC_ROOT = '/home/cybernew/cyber-news.uz/django/staticfiles'
+STATICFILES_DIRS = ('/home/cybernew/cyber-news.uz/django/static', )
 
 # #for local
 # STATICFILES_DIRS = [BASE_DIR / 'static']
@@ -134,7 +134,7 @@ STATICFILES_FINDERS = [
 MEDIA_URL = 'media/'
 
 #for server
-MEDIA_ROOT = '/home/djangomo/django-mohirdev-demo.uz/django/media'
+MEDIA_ROOT = '/home/cybernew/cyber-news.uz/django/media'
 
 #for local
 # MEDIA_ROOT = BASE_DIR / 'media/'

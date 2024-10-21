@@ -4,22 +4,41 @@
 {% block title %} Foydalanuvchi profili {% endblock title %}
 
 {% block content %}
-    <h3>Xush kelibsiz!, {{user.username}}</h3>
 
+<style>
+        #profile-photo{
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+        }
+</style>
+    <h3>Xush kelibsiz! , {{user.username}}</h3>
+
+<button type="submit" class="btn btn-danger">
 <form id="logout-form" action="{% url 'logout' %}" method="post">
-     <h4><a href="#" onclick="document.getElementById('logout-form').submit(); return false;" class="text-danger">Profildan chiqish</a></h4>
+     <h4><a href="#" onclick="document.getElementById('logout-form').submit(); return false;" style="color: white">Profildan chiqish</a></h4>
     {% csrf_token %}
 </form>
+</button>
+
 
 <h2>Siz haqingizda ma'lumotlar</h2>
 
-    <img src="{{ profil_info.photo.url }}" width="30%">
+    <img  id="profile-photo" src="{{ profil_info.photo.url }}" width="30%">
     <h4>Tug'ilgan yilingiz: {{profil_info.date_of_birth}}</h4>
-    <label>Username:</label><input value="{{user.username}}" readonly><br>
-    <label>Emailingiz:</label><input value="{{user.email}}" readonly><br>
-    <label>Familiyangiz:</label><input value="{{user.first_name}}" readonly><br>
-    <label>Ismingiz:</label><input value="{{user.last_name}}" readonly><br>
+    <label>Username:</label><input  class="form-control" value="{{user.username}}" readonly><br>
+    <label>Emailingiz:</label><input  class="form-control" value="{{user.email}}" readonly><br>
+    <label>Familiyangiz:</label><input class="form-control" value="{{user.first_name}}" readonly><br>
+    <label>Ismingiz:</label><input  class="form-control" value="{{user.last_name}}" readonly><br>
 
-    <h4><a href="{% url 'password_change' %}" class="text-danger">Parolni almashtirish</a> | <a href="{% url 'edit_user_information' %}" class="text-danger">Profil ma'lumotlarini o'zgartirish</a> </h4>
+
+
+    <h4><a href="{% url 'password_change' %}" class="text-danger">
+        <button type="button" class="btn btn-danger"> Parolni almashtirish </button>
+    </a> |
+        <a href="{% url 'edit_user_information' %}" class="text-danger">
+            <button type="button" class="btn btn-danger"> Profil ma'lumotlarini o'zgartirish </button>
+        </a>
+    </h4>
 
 {% endblock content %}

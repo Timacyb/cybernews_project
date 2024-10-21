@@ -3,14 +3,20 @@
 {% block title %} KiberSport yangiliklari {% endblock title %}
 
 {% block content %}
-
+<style>
+    .title{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    width: 100%;
+    }
+</style>
     {% for news in kibersportnews%}
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
                         <a href="{{news.get_absolute_url}}">
                         <img src="{{news.image.url}}" alt="{{news.title}}" style="width:50%">
-                        <h2>{{news.title}}</h2>
+                        <h2 class="title">{{news.title}}</h2>
                         </a>
                     </div>
                 </div>

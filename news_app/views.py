@@ -40,7 +40,7 @@ def news_detail(request, news):
         hitcontext['hit_message'] = hit_count_response.hit_message
         hitcontext['total_hits'] = hits
 
-    comments = news.comments.filter(active = True)
+    comments = news.comments.filter(active=True)
     comment_count = comments.count()
 
     comments = news.comments.filter(active=True)
@@ -190,6 +190,11 @@ class KiberjinoyatlarViews(ListView):
         news = News.objects.filter(status=News.Status.Published, category__name='KiberJinoyatchilik')
         # news = self.model.published.all().filter(category='KiberJinoyatchilik')
         return news
+
+
+class AboutUsView(ListView):
+    model = News
+    template_name = 'news/about_us.html'
 
 
 class NewsUpdateView(OnlyLoggedSuperUser, UpdateView):
