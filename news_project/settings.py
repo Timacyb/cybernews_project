@@ -1,6 +1,5 @@
 from pathlib import Path
 from decouple import config
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -95,7 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'uz-uz'
+LANGUAGE_CODE = 'uz'
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -123,14 +122,15 @@ STATIC_URL = 'static/'
 STATIC_ROOT = '/home/cybernew/cyber-news.uz/django/staticfiles'
 STATICFILES_DIRS = ('/home/cybernew/cyber-news.uz/django/static', )
 
-# #for local
-# STATICFILES_DIRS = [BASE_DIR / 'static']
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
+# for local
+# STATICFILES_DIRS = [BASE_DIR / 'static'] #Debug = True
+# STATIC_ROOT = BASE_DIR / 'staticfiles' #Debug = False
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 ]
+
 MEDIA_URL = 'media/'
 
 #for server
